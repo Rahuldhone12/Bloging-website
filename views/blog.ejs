@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/link.ejs') %>
+    <title><%= blog.title %> | Blog</title>
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f8f9fa;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+      }
+      h3 {
+        font-size: 2rem;
+        color: #333;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+      .Blog-Image {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+
+    <div class="container mt-5">
+      <h3><%= blog.title %></h3>
+      <img class=" Blog-Image mt-3" src="<%= blog.coverImageURL %>" alt="Blog cover image">
+      <p class="mt-2"><%= blog.body %></p>
+      <img src="<%= blog.createdBy.profileImageURL %>"  alt="" width="50px"> <%= blog.createdBy.fullName %>
+    </div>
+
+
+
+    <%- include('./partials/script.ejs') %>
+  </body>
+</html>

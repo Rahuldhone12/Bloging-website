@@ -1,9 +1,6 @@
-<nav
-  class="navbar navbar-expand-lg bg-body-tertiary bg-dark"
-  data-bs-theme="dark"
->
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Blogies</a>
+    <a class="navbar-brand" href="#">Shikshavartha</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,13 +13,14 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
         </li>
+
         <% if (locals.user) { %>
         <li class="nav-item">
-          <a class="nav-link" href="/blog/add-new">Add blog</a>
+          <a class="nav-link" href="/blog/add-new">Add Blog</a>
         </li>
 
         <li class="nav-item dropdown">
@@ -33,22 +31,18 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Rahul dhone
+            <%= locals.user.email %>
           </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/user/logout">Log out</a></li>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="/user/logout">Log Out</a></li>
           </ul>
         </li>
-        <% } else {%>
+        <% } else { %>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/user/signup"
-            >create Account</a
-          >
+          <a class="nav-link" href="/user/signup">Create Account</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/user/signIn"
-            >signIn</a
-          >
+          <a class="nav-link" href="/user/signIn">Sign In</a>
         </li>
         <% } %>
       </ul>
@@ -59,6 +53,8 @@
 <% if (locals.error) { %>
 <br />
 <div class="container">
-  <div class="alert alert-danger" role="alert"><%= locals.error %></div>
+  <div class="alert alert-danger text-center" role="alert">
+    <%= locals.error %>
+  </div>
 </div>
 <% } %>

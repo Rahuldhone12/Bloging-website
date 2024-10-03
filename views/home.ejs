@@ -1,24 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<%- include('./partials/link.ejs') %>
-    <title>Document</title>
+    <%- include('./partials/link.ejs') %>
+    <title>Blog Home</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f9;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 8px;
+            background-color: #ffffff;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card img {
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-body {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: #333;
+        }
+        .btn {
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
     <%- include('./partials/nav') %>
-   <div class="container mt-4 ">
-    <% blogs.forEach(blog => { %>
-        <div class="card" style="width: 18rem;">
-            <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title"><%= blog.title %></h5>
-              <a href="/blog/<%= blog._id %>" class="btn btn-primary">view</a>
+    <div class="container mt-4">
+        <% blogs.forEach(blog => { %>
+            <div class="card">
+                <img src="<%= blog.coverImageURL %>" class="card-img-top" alt="Blog cover">
+                <div class="card-body">
+                    <h5 class="card-title"><%= blog.title %></h5>
+                    <a href="/blog/<%= blog._id %>" class="btn btn-primary">View</a>
+                </div>
             </div>
-          </div>
-    <% }) %>
-   </div>
-
-    
+        <% }) %>
+    </div>
     <%- include('./partials/script.ejs') %>
 </body>
 </html>

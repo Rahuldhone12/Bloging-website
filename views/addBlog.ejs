@@ -2,39 +2,108 @@
 <html lang="en">
   <head>
     <%- include('./partials/link.ejs') %>
-    <title>Document</title>
+    <title>Create Blog Post</title>
+    <style>
+      body {
+        background-color: #f0f2f5;
+        font-family: Arial, sans-serif;
+      }
+
+      .blog-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .blog-container h2 {
+        text-align: center;
+        color: #343a40;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .form-label {
+        color: #343a40;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .form-control {
+        height: 40px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        padding: 5px 10px;
+      }
+
+      .form-control:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 8px rgba(40, 167, 69, 0.1);
+      }
+
+      #body {
+        height: 150px;
+        resize: vertical;
+      }
+
+      .btn-success {
+        background-color: #28a745;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-success:hover {
+        background-color: #218838;
+      }
+    </style>
   </head>
   <body>
     <%- include('./partials/nav') %>
 
-    <div class="container mt-8">
+    <div class="blog-container">
+      <h2>Create Blog Post</h2>
       <form action="/blog" method="post" enctype="multipart/form-data">
         <div class="mb-3">
-          <label for="coverImage" class="form-label">coverImage</label>
+          <label for="coverImage" class="form-label">Cover Image</label>
           <input
             type="file"
             class="form-control"
             id="coverImage"
             name="coverImage"
             aria-describedby="coverImage"
+            required
           />
         </div>
         <div class="mb-3">
           <label for="title" class="form-label">Title</label>
           <input
-            type="title"
+            type="text"
             class="form-control"
             id="title"
             name="title"
             aria-describedby="title"
+            placeholder="Enter blog title"
+            required
           />
         </div>
         <div class="mb-3">
-          <label for="body">body</label>
+          <label for="body" class="form-label">Body</label>
           <textarea
-            class="form-control"     
-            name="body"      
+            class="form-control"
+            name="body"
             id="body"
+            placeholder="Write your blog content here"
+            required
           ></textarea>
         </div>
         <div class="mb-3">

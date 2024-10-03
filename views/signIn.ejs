@@ -2,23 +2,88 @@
 <html lang="en">
   <head>
     <%- include('./partials/link.ejs') %>
-    <title>SIGNIN</title>
+    <title>Sign In</title>
+    <style>
+      body {
+        background-color: #f0f2f5;
+        font-family: Arial, sans-serif;
+      }
+
+      .login-container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .login-container h2 {
+        text-align: center;
+        color: #1877f2;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .form-label {
+        color: #1877f2;
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .form-control {
+        height: 35px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ced4da;
+        padding: 5px 10px;
+      }
+
+      .form-control:focus {
+        border-color: #1877f2;
+        box-shadow: 0 0 8px rgba(24, 119, 242, 0.1);
+      }
+
+      .btn-primary {
+        background-color: #1877f2;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        background-color: #155bb5;
+      }
+
+      .login-container small {
+        display: block;
+        text-align: center;
+        margin-top: 10px;
+        color: #6c757d;
+      }
+    </style>
   </head>
   <body>
+    <%- include('./partials/nav') %>
 
-<%- include('./partials/nav') %>
-
-
-    <div class="container mt-52">
+    <div class="login-container">
+      <h2>Sign In</h2>
       <form action="/user/signIn" method="post">
         <div class="mb-3">
-          <label for="email" class="form-label">email</label>
+          <label for="email" class="form-label">Email</label>
           <input
             type="email"
             name="email"
             class="form-control"
             id="email"
-            aria-describedby="emailHelp"
+            placeholder="Enter your email"
+            required
           />
         </div>
         <div class="mb-3">
@@ -28,11 +93,15 @@
             name="password"
             class="form-control"
             id="exampleInputPassword1"
+            placeholder="Enter your password"
+            required
           />
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Sign In</button>
       </form>
+
+      <small>Don't have an account? <a href="/user/signup" style="color: #1877f2;">Create one</a></small>
     </div>
 
     <%- include('./partials/script.ejs') %>
